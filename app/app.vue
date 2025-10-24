@@ -1,27 +1,31 @@
 <script setup>
-
-const session = useUserSession()
+const session = useUserSession();
 async function logout() {
-  await session.clear()
-  await navigateTo('/login')
+  await session.clear();
+  await navigateTo("/login");
 }
 
-
 definePageMeta({
-  middleware:['auth']
-})
+  middleware: ["auth"],
+});
 </script>
 
 <template>
   <UApp>
     <NuxtLayout>
-      <UHeader title="Login">
-        <AuthState>
-          <template #default="{loggedIn}">
-          <button v-if="loggedIn" @click="logout">Logout</button>
-            <NuxtLink v-else to="/login">Login</NuxtLink>
-          </template>
-        </AuthState>
+      <UHeader title="Nuxt-Login">
+        <template #right>
+          <AuthState>
+            <template #default="{ loggedIn }">
+              <button v-if="loggedIn" @click="logout" class="cursor-pointer">
+                Logout
+              </button>
+              <NuxtLink v-else to="/login" class="cursor-pointer"
+                >Login</NuxtLink
+              >
+            </template>
+          </AuthState>
+        </template>
       </UHeader>
       <NuxtPage />
     </NuxtLayout>

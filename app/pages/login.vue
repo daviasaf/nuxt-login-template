@@ -24,7 +24,7 @@ async function onLogin(event: FormSubmitEvent<Schema>) {
         }
       })
 
-      if(!response.sucess){
+      if(!response.success){
         throw new Error('Login failed')  
       }
       console.log(1)

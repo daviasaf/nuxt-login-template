@@ -1,4 +1,3 @@
-import { hashPassword } from "#imports";
 import { z } from "zod/v4";
 import { db, eq, userTable } from "~~/server/database/database";
 
@@ -30,13 +29,13 @@ export default defineEventHandler(async (event) => {
   }
 
   await setUserSession(event, {
-    loggedIn: true, // É bom ter um indicador claro
+    loggedIn: true, 
     user: {
-      id: user.id, // ID do usuário
-      name: user.name, // Nome do usuário
-      email: user.email, // Email do usuário
+      id: user.id, 
+      name: user.name, 
+      email: user.email, 
     },
   });
 
-  return { sucess: true };
+  return { success: true };
 });
